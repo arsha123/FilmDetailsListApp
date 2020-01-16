@@ -3,8 +3,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#cccbc5"
+    >
 
 
 
@@ -26,6 +27,7 @@
                 android:text="example"
                 android:textAlignment="center"
                 android:textSize="30dp"
+            android:textColor="#000000"
                 android:layout_marginTop="40dp"
                 android:textStyle="bold" />
 
@@ -43,7 +45,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="Producer"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:text="decription"
                     android:textSize="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
 
                     android:textStyle="italic" />
@@ -70,7 +74,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="Plot"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -79,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="decription"
                     android:textSize="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:justificationMode="inter_word"
 
@@ -100,7 +106,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="Director"
-                    android:textSize="20dp"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="decription"
                     android:textSize="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="italic" />
             </LinearLayout>
@@ -118,24 +126,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
-                android:layout_marginEnd="10dp">
+                android:layout_marginEnd="30dp">
 
                 <TextView
-                    android:id="@+id/dr_des"
+                    android:id="@+id/des_de"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="Release Date"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="decription"
                     android:textSize="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="italic" />
             </LinearLayout>

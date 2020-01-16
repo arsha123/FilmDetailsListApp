@@ -38,6 +38,7 @@ class FilmlistFragment : Fragment(){
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val v = inflater.inflate(R.layout.filmlist, container, false)
+
         fetchData()
         layoutManager = LinearLayoutManager(activity)
         v.rvChapterList.layoutManager = layoutManager
@@ -79,6 +80,9 @@ class FilmlistFragment : Fragment(){
                             val jObject = JSONObject(responseString)
                             val events = jObject.getJSONArray("results")
                             Log.d("loga", "succ: " + events)
+
+                            chaptersList.clear()
+
                             for (i in 0 until events.length()) {
                                 var jsonObj = events.getJSONObject(i)
 
