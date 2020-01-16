@@ -38,7 +38,7 @@ class FilmlistFragment : Fragment(){
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val v = inflater.inflate(R.layout.filmlist, container, false)
-
+        fetchData()
         layoutManager = LinearLayoutManager(activity)
         v.rvChapterList.layoutManager = layoutManager
         v.rvChapterList.adapter = FilmlistAdapter(activity as Context, chaptersList)
@@ -48,6 +48,68 @@ class FilmlistFragment : Fragment(){
         return v
     }
 
+    private fun fetchData() {
+        val mClient = OkHttpClient();
+        val request:Request = Request.Builder()
+            .url("https://swapi.co/api/films/?format=json")
+            .addHeader("Content-Type", " application/x-www-form-urlencoded")
+            .build()
 
+        mClient.newCall(request).enqueue(object : Callback {
+
+            override fun onFailure(call: okhttp3.Call, e: IOException) {
+                activity!!.runOnUiThread {
+                    Log.d("loga", "succ: " + e)
+
+                }
+
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: okhttp3.Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseString = response.body!!.string()
+                    Log.d("loga", "succ: " + responseString)
+
+                    activity!!.runOnUiThread {
+
+                        try {
+                            val jObject = JSONObject(responseString)
+                            val events = jObject.getJSONArray("results")
+                            Log.d("loga", "succ: " + events)
+                            for (i in 0 until events.length()) {
+                                var jsonObj = events.getJSONObject(i)
+
+                                val titleValue = jsonObj.getString("title")
+                                val producer = jsonObj.getString("producer")
+                                val openingcrawl = jsonObj.getString("opening_crawl")
+                                val director = jsonObj.getString("director")
+                                val date = jsonObj.getString("release_date")
+
+                                val model = Filmlistmodel(
+                                    titleValue,
+                                    producer,
+                                    openingcrawl,
+                                    director,
+                                    date
+                                )
+
+                                chaptersList.add(model)
+                            }
+                            view!!.rvChapterList.adapter =
+                                FilmlistAdapter(activity as Context, chaptersList)
+
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+
+                    }
+                }
+            }
+
+        })
+
+    }
 
 }

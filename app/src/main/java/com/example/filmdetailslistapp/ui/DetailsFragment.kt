@@ -39,7 +39,11 @@ class DetailsFragment(
         super.onCreateView(inflater, container, savedInstanceState)
 
         val v = inflater.inflate(R.layout.details, container, false)
-
+        v.title.text = title
+        v.prod.text = producer
+        v.desc.text = des
+        v.director.text = director
+        v.date.text = date
 
 
 
