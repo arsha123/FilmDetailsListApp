@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tvChapterName"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:text="sample"
         android:textColor="#FFF4F1"
         android:textStyle="bold"

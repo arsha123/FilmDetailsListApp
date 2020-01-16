@@ -41,7 +41,6 @@ class FilmlistFragment : Fragment(){
         fetchData()
         layoutManager = LinearLayoutManager(activity)
         v.rvChapterList.layoutManager = layoutManager
-        v.rvChapterList.adapter = FilmlistAdapter(activity as Context, chaptersList)
 
 
 
@@ -50,7 +49,9 @@ class FilmlistFragment : Fragment(){
 
     private fun fetchData() {
         val mClient = OkHttpClient();
+
         val request:Request = Request.Builder()
+
             .url("https://swapi.co/api/films/?format=json")
             .addHeader("Content-Type", " application/x-www-form-urlencoded")
             .build()
@@ -74,6 +75,7 @@ class FilmlistFragment : Fragment(){
                     activity!!.runOnUiThread {
 
                         try {
+
                             val jObject = JSONObject(responseString)
                             val events = jObject.getJSONArray("results")
                             Log.d("loga", "succ: " + events)
@@ -99,7 +101,7 @@ class FilmlistFragment : Fragment(){
                             view!!.rvChapterList.adapter =
                                 FilmlistAdapter(activity as Context, chaptersList)
 
-
+                            pb.visibility=View.INVISIBLE
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
